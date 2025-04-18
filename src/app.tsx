@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 const App: FC = () => <h1>Hello world!!</h1>
 
