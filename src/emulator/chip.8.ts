@@ -4,7 +4,7 @@ import U16Bit from '../types/u16.bit'
 type Chip8 = {
   // The CHIP-8 has sixteen 8-bit registers, labeled V0 to VF.
   // Each register is able to hold any value from 0x00 to 0xFF.
-  register: U8Bit[]
+  v: U8Bit[]
   // The CHIP-8 has 4096 bytes of memory, meaning the address space is from 0x000 to 0xFFF.
   memory: U8Bit[]
   // The Index Register is a special register used to store memory addresses
@@ -25,9 +25,19 @@ type Chip8 = {
   // The CHIP-8 has a simple timer used for timing. If the timer value is zero, it stays zero.
   // If it is loaded with a value, it will decrement at a rate of 60Hz.
   delayTimer: U8Bit
+  // The CHIP-8 also has another simple timer used for sound.
+  // Its behavior is the same (decrementing at 60Hz if non-zero), but a single tone will buzz when it’s non-zero.
   soundTimer: U8Bit
+  // The CHIP-8 has 16 input keys that match the first 16 hex values: 0 through F.
+  // Each key is either pressed or not pressed.
   keypad: U8Bit[]
+  // The CHIP-8 has an additional memory buffer used for storing the graphics to display.
+  // It is 64 pixels wide and 32 pixels high. Each pixel is either on or off, so only
+  // two colors can be represented.
   video: number[][]
+  // Opcode, short for operation code, is a part of a machine language instruction that tells
+  // the computer what operation to perform. It essentially specifies the action to be carried out,
+  // like adding two numbers, moving data, or branching to another instruction.
   opcode: U16Bit
 }
 
