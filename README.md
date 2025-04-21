@@ -2,6 +2,7 @@
 Chip 8 Emulator PWA
 
 ## Table of Contents
+- [About](#about)
 - [The Tech Stack](#the-tech-stack)
 - [Project Setup](#project-setup)
 - [Project Commands](#project-commands)
@@ -9,6 +10,9 @@ Chip 8 Emulator PWA
   + [Visual Studio Code](#visual-studio-code)
   + [Webstorm](#webstorm)
 - [References](#references)
+
+## About
+In order to update UI tech stack skills, I have decided to write an Emulator. Eventually, I want to create a gameboy emulator, but for now, I am starting off with a CHIP-8 Emulator.
 
 ## The Tech Stack
 The libraries and frameworks that make up the tech stack:
@@ -19,12 +23,13 @@ The libraries and frameworks that make up the tech stack:
 - [daisy UI](https://daisyui.com/) - UI Component Library built with [Tailwind CSS](https://tailwindcss.com/)
 - [Typescript](https://www.typescriptlang.org) - A strongly typed programming language.
 - [Pnpm](https://pnpm.io/) - Fast, disk space efficient package manager.
+- [PWA](https://web.dev/explore/progressive-web-apps) - Capabilities that enable app experiences, built and deployed on the web.
 
 ## Project Setup
 The steps for installing the required frameworks, libraries and tools needed to build, test, run, and deploy this project:
 
 1. Install the latest, stable official release version of [Node JS](https://nodejs.org/).
-2. Since v16.13, [Node JS](https://nodejs.org/) is shipping with [Corepack](https://nodejs.org/api/corepack.html). Enable it for this project and install Pnpm by running the command `corepack enable pnpm`.
+2. Since v16.13, [Node JS](https://nodejs.org/) is shipping with [Corepack](https://nodejs.org/api/corepack.html). Enable it for this project and install [Pnpm](https://pnpm.io/) by running the command `corepack enable pnpm`.
 
 ## Project Commands
 This project is setup to use [Pnpm CLI](https://pnpm.io/pnpm-cli).
