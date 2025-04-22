@@ -1,0 +1,53 @@
+/* eslint-disable no-magic-numbers */
+import U8Bit from '../types/u8.bit'
+import U8BitOf from '../types/u8.bit.of'
+
+const fontSet: U8Bit[] = [
+  U8BitOf(0xf0),
+  U8BitOf(0x90),
+  U8BitOf(0x90),
+  U8BitOf(0x90),
+  U8BitOf(0xf0) /*0*/,
+  U8BitOf(0x20),
+  U8BitOf(0x06),
+  U8BitOf(0x02),
+  U8BitOf(0x02),
+  U8BitOf(0x07) /*1*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x10),
+  U8BitOf(0xf0),
+  U8BitOf(0x80),
+  U8BitOf(0xf0) /*2*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x10),
+  U8BitOf(0xf0),
+  U8BitOf(0x10),
+  U8BitOf(0xf0) /*3*/,
+  U8BitOf(0x90),
+  U8BitOf(0x90),
+  U8BitOf(0xf0),
+  U8BitOf(0x10),
+  U8BitOf(0x10) /*4*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x80),
+  U8BitOf(0xf0),
+  U8BitOf(0x10),
+  U8BitOf(0xf0) /*5*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x80),
+  U8BitOf(0xf0),
+  U8BitOf(0x90),
+  U8BitOf(0xf0) /*6*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x10),
+  U8BitOf(0x20),
+  U8BitOf(0x40),
+  U8BitOf(0x40) /*7*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x90),
+  U8BitOf(0xf0),
+  U8BitOf(0x90),
+  U8BitOf(0xf0) /*8*/
+]
+
+export default fontSet

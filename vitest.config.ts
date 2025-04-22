@@ -11,7 +11,8 @@ export default defineConfig({
       '**/dist/**',
       '**/node_modules/**',
       '**/coverage/**',
-      '**/public/**'
+      '**/public/**',
+      '**/roms/**'
     ],
     reporters: 'verbose'
   }

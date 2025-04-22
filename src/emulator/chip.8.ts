@@ -22,6 +22,10 @@ type Chip8 = {
   // Putting a PC onto the stack is called pushing and pulling a PC off of the
   // stack is called popping.
   stack: U16Bit[]
+  // Similar to how the PC is used to keep track of where in memory the CPU is executing,
+  // we need a Stack Pointer (SP) to tell us where in the 16-levels of stack our most
+  // recent value was placed (i.e, the top).
+  sp: U8Bit
   // The CHIP-8 has a simple timer used for timing. If the timer value is zero, it stays zero.
   // If it is loaded with a value, it will decrement at a rate of 60Hz.
   delayTimer: U8Bit

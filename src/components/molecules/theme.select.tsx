@@ -8,7 +8,7 @@ import Sun from '../atoms/sun'
 export type ThemeSelectProps = object
 
 const ThemeSelect: FC<ThemeSelectProps> = () => {
-  const [theme, setTheme] = useAtom(themeState)
+  const [theme, setTheme] = useAtom<'light' | 'dark'>(themeState)
 
   return (
     <div>
