@@ -4,6 +4,7 @@ Chip 8 Emulator PWA
 ## Table of Contents
 - [About](#about)
 - [The Tech Stack](#the-tech-stack)
+- [Design Patterns](#design-patterns)
 - [Project Setup](#project-setup)
 - [Project Commands](#project-commands)
 - [IDE Plugins](#ide-plugins)
@@ -14,6 +15,12 @@ Chip 8 Emulator PWA
 ## About
 In order to update UI tech stack skills, I have decided to write an Emulator. Eventually, I want to create a gameboy emulator, but for now, I am starting off with a CHIP-8 Emulator.
 
+Whenever I mention to someone that I'm writing a Chip-8 emulator/interpreter, the response is usually: "What's a Chip-8?"
+
+Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems in the late 1970s and early 1980s. The COSMAC VIP, DREAM 6800, and ETI 660 computers are a few examples. These computers typically were designed to use a television as a display, had between 1 and 4K of RAM, and used a 16-key hexadecimal keypad for input. The interpreter took up only 512 bytes of memory, and programs, which were entered into the computer in hexadecimal, were even smaller.
+
+In the early 1990s, the Chip-8 language was revived by a man named Andreas Gustafsson. He created a Chip-8 interpreter for the HP48 graphing calculator, called Chip-48. The HP48 was lacking a way to easily make fast games at the time, and Chip-8 was the answer. Chip-48 later begat Super Chip-48, a modification of Chip-48 which allowed higher resolution graphics, as well as other graphical enhancements.
+
 ## The Tech Stack
 The libraries and frameworks that make up the tech stack:
 
@@ -23,7 +30,14 @@ The libraries and frameworks that make up the tech stack:
 - [daisy UI](https://daisyui.com/) - UI Component Library built with [Tailwind CSS](https://tailwindcss.com/)
 - [Typescript](https://www.typescriptlang.org) - A strongly typed programming language.
 - [Pnpm](https://pnpm.io/) - Fast, disk space efficient package manager.
-- [PWA](https://web.dev/explore/progressive-web-apps) - Capabilities that enable app experiences, built and deployed on the web.
+experiences, built and deployed on the web.
+
+## Design Patterns
+Design and architectual patterns used to build this project:
+
+- [PWA](https://web.dev/explore/progressive-web-apps) - Progressive Web Application.
+- [SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA) - Single Page App;icaton.
+- [Atomic Design](https://rjroopal.medium.com/atomic-design-pattern-structuring-your-react-application-970dd57520f8) - UI component design methodology.
 
 ## Project Setup
 The steps for installing the required frameworks, libraries and tools needed to build, test, run, and deploy this project:
