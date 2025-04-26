@@ -1,6 +1,9 @@
 import U8Bit from '../types/u8.bit'
 import U16Bit from '../types/u16.bit'
 
+/**
+ * Describes the Chip-8 emulation state.
+ */
 type Chip8 = {
   // The CHIP-8 has sixteen 8-bit registers, labeled V0 to VF.
   // Each register is able to hold any value from 0x00 to 0xFF.

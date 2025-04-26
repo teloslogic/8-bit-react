@@ -1,6 +1,7 @@
-/* eslint-disable no-magic-numbers */
 import U8Bit from '../types/u8.bit'
 import U8BitOf from '../types/u8.bit.of'
+
+export const FONT_SET_SIZE = 80
 
 const fontSet: U8Bit[] = [
   U8BitOf(0xf0),
@@ -47,7 +48,42 @@ const fontSet: U8Bit[] = [
   U8BitOf(0x90),
   U8BitOf(0xf0),
   U8BitOf(0x90),
-  U8BitOf(0xf0) /*8*/
+  U8BitOf(0xf0) /*8*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x90),
+  U8BitOf(0xf0),
+  U8BitOf(0x10),
+  U8BitOf(0xf0) /*9*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x90),
+  U8BitOf(0xf0),
+  U8BitOf(0x90),
+  U8BitOf(0x90) /*A*/,
+  U8BitOf(0xe0),
+  U8BitOf(0x90),
+  U8BitOf(0xe0),
+  U8BitOf(0x90),
+  U8BitOf(0xe0) /*B*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x80),
+  U8BitOf(0x80),
+  U8BitOf(0x80),
+  U8BitOf(0xf0) /*C*/,
+  U8BitOf(0xe0),
+  U8BitOf(0x90),
+  U8BitOf(0x90),
+  U8BitOf(0x90),
+  U8BitOf(0xe0) /*D*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x80),
+  U8BitOf(0xf0),
+  U8BitOf(0x80),
+  U8BitOf(0xf0) /*E*/,
+  U8BitOf(0xf0),
+  U8BitOf(0x80),
+  U8BitOf(0xf0),
+  U8BitOf(0x80),
+  U8BitOf(0x80) /*F*/
 ]
 
 export default fontSet

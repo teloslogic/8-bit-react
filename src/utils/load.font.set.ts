@@ -1,19 +1,18 @@
-import fontSet from '../emulator/font.set'
 import U8Bit from '../types/u8.bit'
 
 /**
  * Load font set definition into an array representing
  * emulator memory initial state.
- * @returns
+ * @returns memory intialized with emualtor font set.
  */
-const loadFontSet = (): U8Bit[] => {
-  const memory: U8Bit[] = []
+const loadFontSet =
+  (memory: U8Bit[]): ((fontSet: U8Bit[]) => U8Bit[]) =>
+  (fontSet: U8Bit[]): U8Bit[] => {
+    for (let index = 0; index < fontSet.length; index++) {
+      memory[index] = fontSet[index]
+    }
 
-  for (let index = 0; index < fontSet.length; index++) {
-    memory[index] = fontSet[index]
+    return memory
   }
-
-  return memory
-}
 
 export default loadFontSet

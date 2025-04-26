@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-magic-numbers */
 /**
  * Curried function for settting the bit value at a specified position.
  * @param n The bit position from left to right, 0 to n.

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import RoutingPaths from '../../routing.paths'
+import RoutingPath from '../../routing.path'
 
 export type NavBarStartProps = {
   brandText: string
@@ -24,14 +24,17 @@ const NavBarStart: FC<NavBarStartProps> = ({ brandText }) => (
         tabIndex={1}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li className="text-lg">
-          <NavLink to={RoutingPaths.Games}>Games</NavLink>
+          <NavLink to={RoutingPath.Games}>Games</NavLink>
         </li>
         <li className="text-lg">
-          <NavLink to={RoutingPaths.Debugger}>Debugger</NavLink>
+          <NavLink to={RoutingPath.Debugger}>Debugger</NavLink>
+        </li>
+        <li className="text-lg">
+          <NavLink to={RoutingPath.About}>About</NavLink>
         </li>
       </ul>
     </div>
-    <NavLink className="btn btn-ghost text-xl" to={RoutingPaths.Home}>
+    <NavLink className="btn btn-ghost text-xl" to={RoutingPath.Home}>
       <h1>{brandText}</h1>
     </NavLink>
   </div>

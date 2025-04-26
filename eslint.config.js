@@ -65,7 +65,7 @@ export default tseslint.config(
       'no-empty': 'error',
       'no-eval': 'error',
       'no-irregular-whitespace': 'error',
-      'no-magic-numbers': 'error',
+      //'no-magic-numbers': 'error',
       'no-new': 'error',
       'no-new-func': 'error',
       'no-new-wrappers': 'error',
