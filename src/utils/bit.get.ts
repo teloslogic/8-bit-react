@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 /**
  * Curried function for getting the bit value at a specified position.
  * @param n The bit position from left to right, 0 to n.

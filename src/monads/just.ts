@@ -7,11 +7,11 @@ import Maybe from './maybe'
  */
 const Just = <T>(value: T): Maybe<T> => {
   return {
-    flatMap: <U>(fn: (x: T) => Maybe<U>) => fn(value),
+    flatMap: <U>(fn: (x: T) => Maybe<U>) => fn(Object.freeze(value)),
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getOrElse: (_defaultValue: T): T => value,
     isNothing: (): boolean => false,
-    map: <U>(fn: (x: T) => U) => Just<U>(fn(value)),
+    map: <U>(fn: (x: T) => U) => Just<U>(fn(Object.freeze(value))),
     toString: (): string => `Just(${value})`
   }
 }
