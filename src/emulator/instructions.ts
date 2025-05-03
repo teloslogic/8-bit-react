@@ -1,8 +1,4 @@
-import U8Bit from '../types/u8.bit'
-import U8BitOf from '../types/u8.bit.of'
-import U16Bit from '../types/u16.bit'
-import U16BitOf from '../types/u16.bit.of'
-import Chip8 from './chip.8'
+import Chip8, { VIDEO_DIM } from './chip.8'
 
 /**
  * Each CPU instruction returns an updated emualtor state.
@@ -23,7 +19,7 @@ export const NO_OP = (state: Chip8): Chip8 => state
  * @returns The new emulator state.
  */
 export const CLS_00E0 = (state: Chip8): Chip8 => {
-  state.video = []
+  state.video = new Uint32Array(VIDEO_DIM)
 
   return state
 }
@@ -35,9 +31,8 @@ export const CLS_00E0 = (state: Chip8): Chip8 => {
  * @returns The new emulator state.
  */
 export const RET_00EE = (state: Chip8): Chip8 => {
-  const decrementedSp = state.sp.decrement()
-  state.sp = decrementedSp
-  state.pc = state.stack[state.sp.getNumber()]
+  state.sp[0] = state.sp[0]--
+  state.pc[0] = state.stack[state.sp[0]]
 
   return state
 }
@@ -49,9 +44,9 @@ export const RET_00EE = (state: Chip8): Chip8 => {
  * @returns The new emulator state.
  */
 export const JP_1NNN = (state: Chip8): Chip8 => {
-  const address: U16Bit = state.opcode.AND(U16BitOf(0x0fff))
+  const address = state.opcode[0] & 0x0fff
 
-  state.pc = address
+  state.pc[0] = address
 
   return state
 }
@@ -63,24 +58,24 @@ export const JP_1NNN = (state: Chip8): Chip8 => {
  * @returns The new emulator state.
  */
 export const LD_6XNN = (state: Chip8): Chip8 => {
-  const x: U8Bit = U8BitOf(state.opcode.AND(U16BitOf(0x0f00)).getNumber() >> 8)
-  const byte: U8Bit = U8BitOf(state.opcode.AND(U16BitOf(0x00ff)).getNumber())
+  const x = (state.opcode[0] & 0x0f00) >> 8
+  const byte = state.opcode[0] & 0x00ff
 
-  state.v[x.getNumber()] = byte
+  state.v[x] = byte
 
   return state
 }
 
 /**
  * Set the Index register.
- * I = address
+ * I = NNN
  * @param state The current emulator state.
  * @returns The new emulator state.
  */
 export const LD_ANNN = (state: Chip8): Chip8 => {
-  const address: U16Bit = state.opcode.AND(U16BitOf(0x0fff))
+  const address = state.opcode[0] & 0x0fff
 
-  state.index = address
+  state.index[0] = address
 
   return state
 }
@@ -92,10 +87,10 @@ export const LD_ANNN = (state: Chip8): Chip8 => {
  * @returns The new emulator state.
  */
 export const ADD_7XNN = (state: Chip8): Chip8 => {
-  const x: U8Bit = U8BitOf(state.opcode.AND(U16BitOf(0x0f00)).getNumber() >> 8)
-  const byte: U8Bit = U8BitOf(state.opcode.AND(U16BitOf(0x00ff)).getNumber())
+  const x = (state.opcode[0] & 0x0f00) >> 8
+  const byte = state.opcode[0] & 0x00ff
 
-  state.v[x.getNumber()] = U8BitOf(state.v[x.getNumber()].getNumber() + byte.getNumber())
+  state.v[x] = state.v[x] + byte
 
   return state
 }

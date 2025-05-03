@@ -1,4 +1,3 @@
-import U16BitOf from '../types/u16.bit.of'
 import Chip8 from './chip.8'
 import { ADD_7XNN, CLS_00E0, Instruction, JP_1NNN, LD_6XNN, LD_ANNN, NO_OP, RET_00EE } from './instructions'
 
@@ -16,17 +15,17 @@ funcTable0[0x0] = CLS_00E0
 funcTable0[0xe] = RET_00EE
 
 const Table0 = (state: Chip8): Chip8 => {
-  const resultState = funcTable0[state.opcode.AND(U16BitOf(0x000f)).getNumber()](state)
+  const resultState = funcTable0[state.opcode[0]](state)
   return resultState
 }
 
 const Table8 = (state: Chip8): Chip8 => {
-  const resultState = funcTable8[state.opcode.AND(U16BitOf(0x000f)).getNumber()](state)
+  const resultState = funcTable8[state.opcode[0]](state)
   return resultState
 }
 
 const TableE = (state: Chip8): Chip8 => {
-  const resultState = funcTableE[state.opcode.AND(U16BitOf(0x000f)).getNumber()](state)
+  const resultState = funcTableE[state.opcode[0]](state)
   return resultState
 }
 
