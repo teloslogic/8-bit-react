@@ -1,4 +1,4 @@
-import Chip8, { VIDEO_DIM } from './chip.8'
+import Chip8, { VIDEO_HEIGHT, VIDEO_WIDTH } from './chip.8'
 
 /**
  * Each CPU instruction returns an updated emualtor state.
@@ -19,7 +19,7 @@ export const NO_OP = (state: Chip8): Chip8 => state
  * @returns The new emulator state.
  */
 export const CLS_00E0 = (state: Chip8): Chip8 => {
-  state.video = new Uint32Array(VIDEO_DIM)
+  state.video = new Uint32Array(VIDEO_WIDTH * VIDEO_HEIGHT)
 
   return state
 }
@@ -94,3 +94,5 @@ export const ADD_7XNN = (state: Chip8): Chip8 => {
 
   return state
 }
+
+export const DRW_DXYN = (state: Chip8): Chip8 => state

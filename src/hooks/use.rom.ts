@@ -1,13 +1,12 @@
 import { useAtom } from 'jotai'
 import { useEffect } from 'react'
 
-import Chip8 from '../emulator/chip.8'
+import Chip8, { START_ADDRESS } from '../emulator/chip.8'
 import emulatorState from '../state/emulator.state'
 import cloneChip8 from '../utils/clone.chip8'
 import loadRomFrom from '../utils/load.rom.from'
 
 const useRom = (url: string) => {
-  const START_ADDRESS = 0x200
   const [, setState] = useAtom<Chip8>(emulatorState)
 
   useEffect(() => {

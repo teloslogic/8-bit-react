@@ -1,6 +1,7 @@
 export const MEMORY_SIZE = 4096
-export const PC_INIT = 0x200
-export const VIDEO_DIM = 64 * 32
+export const START_ADDRESS = 0x200
+export const VIDEO_WIDTH = 64
+export const VIDEO_HEIGHT = 32
 
 /**
  * Describes the Chip-8 emulation state.
