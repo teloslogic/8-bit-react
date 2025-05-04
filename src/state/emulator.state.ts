@@ -1,30 +1,27 @@
 import { atom } from 'jotai'
 
-import Chip8 from '../emulator/chip.8'
+import Chip8, { MEMORY_SIZE, PC_INIT, VIDEO_DIM } from '../emulator/chip.8'
 import fontSet from '../emulator/font.set'
-import U8BitOf from '../types/u8.bit.of'
-import U16BitOf from '../types/u16.bit.of'
 import loadFontSet from '../utils/load.font.set'
 
-const ONE_BYTE_INIT_VALUE = 0x00
-const TWO_BYTE_INIT_VALUE = 0x0000
-const PC_INIT_VALUE = 0x200
-
-const loadFontSetIntoMemory = loadFontSet([])
+const loadFontSetIntoMemory = loadFontSet(new Uint8Array(MEMORY_SIZE))
 
 export const initialEmulatorState: Chip8 = {
-  v: [],
-  memory: loadFontSetIntoMemory(fontSet),
-  index: U16BitOf(TWO_BYTE_INIT_VALUE),
-  pc: U16BitOf(PC_INIT_VALUE),
-  stack: [],
-  sp: U8BitOf(ONE_BYTE_INIT_VALUE),
-  delayTimer: U8BitOf(TWO_BYTE_INIT_VALUE),
-  soundTimer: U8BitOf(TWO_BYTE_INIT_VALUE),
-  keypad: [],
-  video: [],
-  opcode: U16BitOf(TWO_BYTE_INIT_VALUE)
+  v: new Uint8Array(16),
+  memory: new Uint8Array(MEMORY_SIZE),
+  index: new Uint16Array(1),
+  pc: new Uint16Array(1),
+  stack: new Uint16Array(16),
+  sp: new Uint8Array(1),
+  delayTimer: new Uint8Array(1),
+  soundTimer: new Uint8Array(1),
+  keypad: new Uint8Array(16),
+  video: new Uint32Array(VIDEO_DIM),
+  opcode: new Uint16Array(1)
 }
+
+initialEmulatorState.pc[0] = PC_INIT
+initialEmulatorState.memory = loadFontSetIntoMemory(fontSet)
 
 const emulatorState = atom<Chip8>(initialEmulatorState)
 

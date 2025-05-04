@@ -21,6 +21,8 @@ const useRom = (url: string) => {
           rom.map(currentValue => {
             clonedState.memory[memoryIndex] = currentValue
             memoryIndex++
+
+            return currentValue
           })
 
           return clonedState

@@ -1,12 +1,9 @@
-import U8Bit from '../types/u8.bit'
-import U8BitOf from '../types/u8.bit.of'
-
 /**
  * An http/https request for a game ROM
  * @param url The relative url of the rom file
  * @returns Promise<U8Bit[]> of the game ROM.
  */
-const loadRomFrom = async (url: string): Promise<U8Bit[]> => {
+const loadRomFrom = async (url: string): Promise<Uint8Array> => {
   const response = await fetch(url)
 
   if (!response.ok) {
@@ -14,10 +11,7 @@ const loadRomFrom = async (url: string): Promise<U8Bit[]> => {
   }
 
   const arrayBuffer = await response.arrayBuffer()
-  const uIntArray = new Uint8Array(arrayBuffer)
-  const binaryArray: U8Bit[] = []
-
-  uIntArray.map(currentValue => binaryArray.push(U8BitOf(currentValue)))
+  const binaryArray = new Uint8Array(arrayBuffer)
 
   return binaryArray
 }
