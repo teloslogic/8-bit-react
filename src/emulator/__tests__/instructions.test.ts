@@ -17,7 +17,7 @@ describe('The JP_1NNN CPU instruction', () => {
   it('should be able to set PC to 0x0456', () => {
     const state = initialEmulatorState
 
-    state.opcode[0] = 0x2456
+    state.opcode[0] = 0x1456
 
     const result = JP_1NNN(state)
 
@@ -70,15 +70,15 @@ describe('The ADD_7XNN CPU instruction', () => {
     expect(result.v[0x3]).toBe(0xe)
   })
 
-  it('should be able to set register V15 with the value 42', () => {
+  it('should be able to set register V14 with the value 42', () => {
     const state = initialEmulatorState
 
-    state.opcode[0] = 0x7f1d
+    state.opcode[0] = 0x7e1d
 
-    state.v[0xf] = 0x0d
+    state.v[0xe] = 0x0d
 
     const result = ADD_7XNN(state)
 
-    expect(result.v[0xf]).toBe(0x2a)
+    expect(result.v[0xe]).toBe(0x2a)
   })
 })
