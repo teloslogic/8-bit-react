@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 
-import Chip8, { MEMORY_SIZE, PC_INIT, VIDEO_DIM } from '../emulator/chip.8'
+import Chip8, { MEMORY_SIZE, START_ADDRESS, VIDEO_HEIGHT, VIDEO_WIDTH } from '../emulator/chip.8'
 import fontSet from '../emulator/font.set'
 import loadFontSet from '../utils/load.font.set'
 
@@ -16,11 +16,11 @@ export const initialEmulatorState: Chip8 = {
   delayTimer: new Uint8Array(1),
   soundTimer: new Uint8Array(1),
   keypad: new Uint8Array(16),
-  video: new Uint32Array(VIDEO_DIM),
+  video: new Uint32Array(VIDEO_WIDTH * VIDEO_HEIGHT),
   opcode: new Uint16Array(1)
 }
 
-initialEmulatorState.pc[0] = PC_INIT
+initialEmulatorState.pc[0] = START_ADDRESS
 initialEmulatorState.memory = loadFontSetIntoMemory(fontSet)
 
 const emulatorState = atom<Chip8>(initialEmulatorState)

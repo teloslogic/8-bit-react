@@ -1,3 +1,4 @@
+/** System Constansts */
 export const MEMORY_SIZE = 4096
 export const START_ADDRESS = 0x200
 export const VIDEO_WIDTH = 64

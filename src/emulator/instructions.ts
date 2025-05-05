@@ -95,4 +95,36 @@ export const ADD_7XNN = (state: Chip8): Chip8 => {
   return state
 }
 
-export const DRW_DXYN = (state: Chip8): Chip8 => state
+export const DRW_DXYN = (state: Chip8): Chip8 => {
+  const x = (state.opcode[0] & 0x0f00) >> 8
+  const y = (state.opcode[0] & 0x00f0) >> 4
+  const height = state.opcode[0] & 0x000f
+
+  // wrap if going beyond screen boundaries
+  const xPosition = state.v[x] % VIDEO_WIDTH
+  const yPosition = state.v[y] % VIDEO_HEIGHT
+
+  state.v[0xf] = 0
+
+  for (let row = 0; row < height; row++) {
+    const spriteByte = state.memory[state.index[0] + row]
+
+    for (let column = 0; column < 8; ++column) {
+      const spritePixel = spriteByte & (0x80 >> column)
+      let screenPixel = state.video[(yPosition + row) * VIDEO_WIDTH + (xPosition + column)]
+
+      // sprite pixel is on
+      if (spritePixel) {
+        // screen pixel also on - collision
+        if (screenPixel == 0xffffffff) {
+          state.v[0xf] = 1
+        }
+
+        // effectively XOR with the sprite pixel
+        screenPixel ^= 0xffffffff
+      }
+    }
+  }
+
+  return state
+}
