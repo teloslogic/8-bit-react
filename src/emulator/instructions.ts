@@ -100,29 +100,29 @@ export const DRW_DXYN = (state: Chip8): Chip8 => {
   const y = (state.opcode[0] & 0x00f0) >> 4
   const height = state.opcode[0] & 0x000f
 
-  // wrap if going beyond screen boundaries
-  const xPosition = state.v[x] % VIDEO_WIDTH
-  const yPosition = state.v[y] % VIDEO_HEIGHT
+  const xPos = state.v[x] % VIDEO_WIDTH
+  const yPos = state.v[y] % VIDEO_HEIGHT
 
-  state.v[0xf] = 0
+  state.v[0xf] = 0 // collision flag
 
   for (let row = 0; row < height; row++) {
     const spriteByte = state.memory[state.index[0] + row]
 
-    for (let column = 0; column < 8; ++column) {
+    for (let column = 0; column < 8; column++) {
       const spritePixel = spriteByte & (0x80 >> column)
-      let screenPixel = state.video[(yPosition + row) * VIDEO_WIDTH + (xPosition + column)]
+      if (spritePixel === 0) continue
 
-      // sprite pixel is on
-      if (spritePixel) {
-        // screen pixel also on - collision
-        if (screenPixel == 0xffffffff) {
-          state.v[0xf] = 1
-        }
+      const x = (xPos + column) % VIDEO_WIDTH
+      const y = (yPos + row) % VIDEO_HEIGHT
+      const index = y * VIDEO_WIDTH + x
+      const screenPixel = state.video[index]
 
-        // effectively XOR with the sprite pixel
-        screenPixel ^= 0xffffffff
+      // collision detection
+      if (screenPixel === 0xffffffff) {
+        state.v[0xf] = 1
       }
+
+      state.video[index] ^= 0xffffffff
     }
   }
 
