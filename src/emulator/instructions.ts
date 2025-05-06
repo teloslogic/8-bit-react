@@ -18,7 +18,7 @@ export const NO_OP = (state: Chip8): Chip8 => state
  * @param state The current emualtor state.
  * @returns The new emulator state.
  */
-export const CLS_00E0 = (state: Chip8): Chip8 => {
+export const INST_00E0 = (state: Chip8): Chip8 => {
   state.video = new Uint32Array(VIDEO_WIDTH * VIDEO_HEIGHT)
 
   return state
@@ -30,7 +30,7 @@ export const CLS_00E0 = (state: Chip8): Chip8 => {
  * @param state The current emulator state.
  * @returns The new emulator state.
  */
-export const RET_00EE = (state: Chip8): Chip8 => {
+export const INST_00EE = (state: Chip8): Chip8 => {
   state.sp[0] = state.sp[0]--
   state.pc[0] = state.stack[state.sp[0]]
 
@@ -43,7 +43,7 @@ export const RET_00EE = (state: Chip8): Chip8 => {
  * @param state The current emualtor state.
  * @returns The new emulator state.
  */
-export const JP_1NNN = (state: Chip8): Chip8 => {
+export const INST_1NNN = (state: Chip8): Chip8 => {
   const address = state.opcode[0] & 0x0fff
 
   state.pc[0] = address
@@ -57,7 +57,7 @@ export const JP_1NNN = (state: Chip8): Chip8 => {
  * @param state The current emulator state.
  * @returns The new emulator state.
  */
-export const LD_6XNN = (state: Chip8): Chip8 => {
+export const INST_6XNN = (state: Chip8): Chip8 => {
   const x = (state.opcode[0] & 0x0f00) >> 8
   const byte = state.opcode[0] & 0x00ff
 
@@ -72,7 +72,7 @@ export const LD_6XNN = (state: Chip8): Chip8 => {
  * @param state The current emulator state.
  * @returns The new emulator state.
  */
-export const LD_ANNN = (state: Chip8): Chip8 => {
+export const INST_ANNN = (state: Chip8): Chip8 => {
   const address = state.opcode[0] & 0x0fff
 
   state.index[0] = address
@@ -86,7 +86,7 @@ export const LD_ANNN = (state: Chip8): Chip8 => {
  * @param state The current emulator state.
  * @returns The new emulator state.
  */
-export const ADD_7XNN = (state: Chip8): Chip8 => {
+export const INST_7XNN = (state: Chip8): Chip8 => {
   const x = (state.opcode[0] & 0x0f00) >> 8
   const byte = state.opcode[0] & 0x00ff
 
@@ -95,7 +95,7 @@ export const ADD_7XNN = (state: Chip8): Chip8 => {
   return state
 }
 
-export const DRW_DXYN = (state: Chip8): Chip8 => {
+export const INST_DXYN = (state: Chip8): Chip8 => {
   const x = (state.opcode[0] & 0x0f00) >> 8
   const y = (state.opcode[0] & 0x00f0) >> 4
   const height = state.opcode[0] & 0x000f

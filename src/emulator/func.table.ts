@@ -1,5 +1,15 @@
 import Chip8 from './chip.8'
-import { ADD_7XNN, CLS_00E0, Instruction, JP_1NNN, LD_6XNN, LD_ANNN, NO_OP, RET_00EE } from './instructions'
+import {
+  INST_00E0,
+  INST_00EE,
+  INST_1NNN,
+  INST_6XNN,
+  INST_7XNN,
+  INST_ANNN,
+  INST_DXYN,
+  Instruction,
+  NO_OP
+} from './instructions'
 
 export const funcTable0: Instruction[] = []
 export const funcTable8: Instruction[] = []
@@ -11,8 +21,8 @@ for (let index = 0; index <= 0xe; index++) {
   funcTableE[index] = NO_OP
 }
 
-funcTable0[0x0] = CLS_00E0
-funcTable0[0xe] = RET_00EE
+funcTable0[0x0] = INST_00E0
+funcTable0[0xe] = INST_00EE
 
 const Table0 = (state: Chip8): Chip8 => {
   const resultState = funcTable0[state.opcode[0]](state)
@@ -31,19 +41,19 @@ const TableE = (state: Chip8): Chip8 => {
 
 const funcTable: Instruction[] = [
   Table0,
-  JP_1NNN,
+  INST_1NNN,
   NO_OP,
   NO_OP,
   NO_OP,
   NO_OP,
-  LD_6XNN,
-  ADD_7XNN,
+  INST_6XNN,
+  INST_7XNN,
   Table8,
   NO_OP,
-  LD_ANNN,
+  INST_ANNN,
   NO_OP,
   NO_OP,
-  NO_OP,
+  INST_DXYN,
   TableE,
   NO_OP
 ]

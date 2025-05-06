@@ -7,7 +7,8 @@ const aspectRatio = VIDEO_WIDTH / VIDEO_HEIGHT
 
 export const initialRuntimeState: Runtime = {
   videoScale: aspectRatio * 3.2,
-  cycleDelay: 1,
+  delayTimer: 1,
+  soundTimer: 1,
   isRunning: true
 }
 
